@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+/* Global minimal */
+:root {
+  --accent: #C9E730;
+  --deep: #003332;
+}
+html, body, #root { height: 100%; }
+body { margin: 0; background: var(--deep); color: #fff; }
+a { text-decoration: none; }
