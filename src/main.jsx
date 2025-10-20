@@ -5,6 +5,9 @@ import { HashRouter, Routes, Route } from 'react-router-dom'
 import LandingNaoMatch from './App.jsx'
 import RedirectToApp from './pages/RedirectToApp.jsx'
 
+console.log("🧭 Application React démarrée")
+
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <HashRouter>
