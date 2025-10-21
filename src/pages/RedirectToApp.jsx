@@ -2,8 +2,23 @@ import { useEffect } from "react";
 
 export default function RedirectToApp() {
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const matchId = params.get("id");
+    // ✅ Lecture du paramètre id depuis l’URL (compatible HashRouter)
+    let matchId = null;
+
+    if (window.location.hash.includes("?")) {
+      const searchParams = new URLSearchParams(window.location.hash.split("?")[1]);
+      matchId = searchParams.get("id");
+    } else if (window.location.search) {
+      const searchParams = new URLSearchParams(window.location.search);
+      matchId = searchParams.get("id");
+    }
+
+    if (!matchId) {
+      console.warn("Aucun match ID trouvé dans l’URL.");
+      return;
+    }
+
+    console.log("🔗 Match ID détecté :", matchId);
 
     const appLink = `naomatch://match/${matchId}`;
     const playStore = "https://play.google.com/store/apps/details?id=com.naomatch.app";
@@ -16,7 +31,7 @@ export default function RedirectToApp() {
     // Tente d’ouvrir l’app
     window.location.href = appLink;
 
-    // Redirige vers le store après 1,5 s si l’app n’est pas installée
+    // Redirige vers le store après 1,5s si l’app n’est pas installée
     const timeout = setTimeout(() => {
       window.location.href = storeUrl;
     }, 1500);
