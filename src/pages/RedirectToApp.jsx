@@ -55,7 +55,7 @@ export default function RedirectToApp() {
           href="https://play.google.com/store/apps/details?id=com.naomatch.app"
           style={{ color: "#C9E730" }}
         >
-          télécharge l’app ici
+          télécharge l’app ici !
         </a>.
       </p>
     </div>
